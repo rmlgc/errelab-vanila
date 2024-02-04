@@ -1,0 +1,27 @@
+.animate {
+    transition: all 1.75s ease-in-out;
+}
+
+.show {
+    opacity: 1;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.right.hide {
+    transform: translateX(-100svw);
+}
+
+.left.hide {
+    transform: translateX(100svw);
+}
+
+.right.show {
+    transform: translateX(0svw);
+}
+
+.left.show {
+    transform: translateX(0svw);
+}

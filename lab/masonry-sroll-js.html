@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation</title>
+</head>
+
+<body>
+    <div class="g-masonrry">
+        <div class="g-box a-right-left w25 h25" id="box1">Elemento 1</div>
+        <div class="g-box a-right-left w25 h25" id="box2">Elemento 2</div>
+        <div class="g-box a-right-left w25 h25" id="box3">Elemento 3</div>
+        <div class="g-box a-right-left w50 h75" id="box4">Elemento 4</div>
+        <div class="g-box a-right-left w75 h25" id="box5">Elemento 5</div>
+        <div class="g-box a-right-left w25 h25" id="box6">Elemento 6</div>
+        <div class="g-box a-right-left w25 h25" id="box7">Elemento 7</div>
+        <div class="g-box a-right-left w25 h25" id="box8">Elemento 8</div>
+        <div class="g-box a-right-left w55 h25" id="box9">Elemento 9</div>
+        <div class="g-box a-right-left w25 h25" id="box10">Elemento 10</div>
+        <div class="g-box a-right-left w25 h25" id="box11">Elemento 11</div>
+        <div class="g-box a-right-left w25 h25" id="box12">Elemento 12</div>
+    </div>
+    <footer>
+
+    </footer>
+    <input type="checkbox" name="ck-showArea" id="ck-showArea" checked />
+    <label id="showArea" for="ck-showArea">.</label>
+    <script>
+
+        /**
+         * Create a class to control the default name to animate s
+         * 
+         *
+        */
+
+        document.addEventListener("DOMContentLoaded", function ()
+        {
+            window.addEventListener("scroll", revealOnScroll);
+            window.addEventListener("resize", revealOnScroll);
+            revealOnScroll();
+        });
+
+        function revealOnScroll()
+        {
+            const boxes = document.querySelectorAll('.g-box');
+            const offsetTop = window.innerHeight * 0.20;
+            const offsetBottom = window.innerHeight * 0.10;
+
+            boxes.forEach(function (box)
+            {
+                const boxTop = box.getBoundingClientRect().top;
+                const boxBottom = box.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+
+                const calculatedTop = boxTop + offsetTop;
+                const calculatedBottom = boxBottom - offsetBottom;
+
+                console.log(calculatedTop, calculatedBottom);
+
+                box.classList.add('hide');
+                box.classList.remove('show');
+                if (calculatedTop < windowHeight && calculatedBottom > 0)
+                {
+                    box.classList.remove('show');
+                    box.classList.add('show');
+                }
+
+            });
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            min-height: 150vh;
+
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .g-box {
+            height: 100%;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .hide {
+            opacity: 0;
+            transition: opacity 3s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .show {
+            opacity: 1;
+            transition: opacity 3s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .hide.a-right-left {
+            transform: translateX(-100lvw);
+        }
+
+        .a-right-left.show {
+            transform: translateX(0lvw);
+        }
+
+        #box2 {
+            background-color: lightblue;
+        }
+
+        .g-masonrry {
+            display: grid;
+            grid-gap: 10px;
+            /* grid-template-rows: repeat(4, 1fr); */
+            /* grid-template-rows: repeat(auto-fit, 1fr); */
+            grid-template-columns: repeat(auto-fit, minmax(calc(50svw - 10px), 1fr));
+            grid-template-rows: masonry;
+            grid-auto-flow: dense;
+            /* padding: 20px; */
+        }
+
+        .w25 {
+            grid-column: span 1;
+        }
+
+        .h25 {
+            grid-row: span 1;
+        }
+
+        @media screen and (min-width:767px) {
+            .g-masonrry {
+                grid-template-rows: repeat(auto-fit, minmax(calc(30svh - 10px), 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(calc(30svw - 10px), 1fr));
+            }
+
+            .h50 {
+                grid-row: span 2;
+            }
+
+            .w50 {
+                grid-column: span 2;
+            }
+
+            .h75 {
+                grid-row: span 2;
+            }
+
+            .w75 {
+                grid-column: span 2;
+            }
+        }
+
+        @media screen and (min-width:1012px) {
+            .g-masonrry {
+                grid-template-rows: repeat(auto-fit, minmax(calc(32svh - 10px), 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(calc(22svw - 10px), 1fr));
+            }
+
+            .h75 {
+                grid-row: span 3;
+            }
+
+            .w75 {
+                grid-column: span 3;
+            }
+        }
+
+        /*
+        * for show the range detection
+        */
+        :root {
+            --from: 10svh;
+            --to: 20svh;
+        }
+
+        #showArea {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            transition: translate 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            translate: 0svw;
+            display: flex;
+            flex-flow: column;
+            flex-direction: column;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        #showArea::after,
+        #showArea::before {
+            content: '';
+            display: block;
+            background-color: rgba(226, 141, 226, 0.302);
+            backdrop-filter: blur(22px) opacity(0.8);
+        }
+
+        #showArea::before {
+            height: var(--from);
+        }
+
+        #showArea::after {
+            height: var(--to);
+        }
+
+        #ck-showArea {
+            position: fixed;
+        }
+
+        #ck-showArea:checked~#showArea {
+            translate: -90svw;
+        }
+    </style>
+</body>
+
+</html>

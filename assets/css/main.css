@@ -1,0 +1,80 @@
+.t--font-primary,
+.t--pacifico {
+    font-family: 'Pacifico', cursive;
+    line-height: 1.7em;
+}
+
+.t--white {
+    color: var(--color-white);
+}
+
+.t--black {
+    color: var(--color-black);
+}
+
+.t--primary {
+    color: var(--color-primary);
+}
+
+.t--secondary {
+    color: var(--color-secondary);
+}
+
+.t--gradient-primary {
+    background-image: -webkit-linear-gradient(to left, var(--color-primary), var(--color-secondary));
+    background-image: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.t--gradient-secondary {
+    background-image: -webkit-linear-gradient(to left, var(--color-secondary), var(--color-primary));
+    background-image: linear-gradient(to left, var(--color-secondary), var(--color-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.t--initial::first-letter {
+    font-size: 150%;
+    initial-letter: 2;
+    -webkit-initial-letter: 3;
+    initial-letter: 3;
+    margin-right: .25em;
+    line-height: 0%;
+}
+
+.bg--primary {
+    background-color: var(--color-primary);
+}
+
+.bg--secondary {
+    background-color: var(--color-secondary);
+}
+
+.bg--gradient-primary {
+    background-image: -webkit-linear-gradient(to left, var(--color-primary), var(--color-secondary));
+    background-image: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+}
+
+.bg--gradient-secondary {
+    background-image: -webkit-linear-gradient(to left, var(--color-secondary), var(--color-primary));
+    background-image: linear-gradient(to left, var(--color-secondary), var(--color-primary));
+}
+
+.bg--primary-o {
+    background-color: var(--color-primary-o);
+}
+
+.bg--secondary-o {
+    background-color: var(--color-secondary-o);
+}
+
+.bg--gradient-primary-o {
+    background-image: -webkit-linear-gradient(to left, var(--color-primary-o), var(--color-secondary-o));
+    background-image: linear-gradient(to left, var(--color-primary-o), var(--color-secondary-o));
+}
+
+.bg--gradient-secondary-o {
+    background-image: -webkit-linear-gradient(to left, var(--color-secondary-o), var(--color-primary-o));
+    background-image: linear-gradient(to left, var(--color-secondary-o), var(--color-primary-o));
+}

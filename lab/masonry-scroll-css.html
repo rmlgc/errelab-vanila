@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation</title>
+</head>
+
+<body>
+    <header></header>
+    <section class="blank-space">
+
+    </section>
+    <div class="g-masonrry">
+        <div class="g-box w25 h25" id="box1">Elemento 1</div>
+        <div class="g-box w25 h25" id="box2">Elemento 2</div>
+        <div class="g-box w25 h25" id="box3">Elemento 3</div>
+        <div class="g-box w50 h75" id="box4">Elemento 4</div>
+        <div class="g-box w75 h25" id="box5">Elemento 5</div>
+        <div class="g-box w25 h25" id="box6">Elemento 6</div>
+        <div class="g-box w25 h25" id="box7">Elemento 7</div>
+        <div class="g-box w25 h25" id="box8">Elemento 8</div>
+        <div class="g-box w55 h25" id="box9">Elemento 9</div>
+        <div class="g-box w25 h25" id="box10">Elemento 10</div>
+        <div class="g-box w25 h25" id="box11">Elemento 11</div>
+        <div class="g-box w25 h25" id="box12">Elemento 12</div>
+    </div>
+    <footer>
+
+    </footer>
+    <input type="checkbox" name="ck-showArea" id="ck-showArea" checked />
+    <label id="showArea" for="ck-showArea">.</label>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .blank-space {
+            min-height: 80lvh;
+        }
+
+        section {
+            min-height: 150vh;
+
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .g-box {
+            height: 100%;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            opacity: 1;
+            vertical-align: middle;
+            display: inline-block;
+            animation-name: right-left;
+            animation-duration: 3ms;
+            /* Firefox requires this to apply the animation */
+            animation-timeline: view(block var(--from) var(--to));
+            /* transform: translateX(-100lvw); */
+        }
+
+        .show {
+            opacity: 1;
+            transition: opacity 3s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .a-right-left {
+            transform: translateX(-100lvw);
+        }
+
+        .a-right-left.show {
+            transform: translateX(0lvw);
+        }
+
+        @keyframes right-left {
+            from {
+                transform: translateX(-100lvw);
+            }
+
+            to {
+                transform: translateX(0lvw);
+            }
+        }
+
+        #box2 {
+            background-color: lightblue;
+        }
+
+        .g-masonrry {
+            display: grid;
+            grid-gap: 10px;
+            /* grid-template-rows: repeat(4, 1fr); */
+            /* grid-template-rows: repeat(auto-fit, 1fr); */
+            grid-template-columns: repeat(auto-fit, minmax(calc(50svw - 10px), 1fr));
+            grid-template-rows: masonry;
+            grid-auto-flow: dense;
+            /* padding: 20px; */
+        }
+
+        .w25 {
+            grid-column: span 1;
+        }
+
+        .h25 {
+            grid-row: span 1;
+        }
+
+        @media screen and (min-width:767px) {
+            .g-masonrry {
+                grid-template-rows: repeat(auto-fit, minmax(calc(30svh - 10px), 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(calc(30svw - 10px), 1fr));
+            }
+
+            .h50 {
+                grid-row: span 2;
+            }
+
+            .w50 {
+                grid-column: span 2;
+            }
+
+            .h75 {
+                grid-row: span 2;
+            }
+
+            .w75 {
+                grid-column: span 2;
+            }
+        }
+
+        @media screen and (min-width:1012px) {
+            .g-masonrry {
+                grid-template-rows: repeat(auto-fit, minmax(calc(32svh - 10px), 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(calc(22svw - 10px), 1fr));
+            }
+
+            .h75 {
+                grid-row: span 3;
+            }
+
+            .w75 {
+                grid-column: span 3;
+            }
+        }
+
+
+        /*
+        * for show the range detection
+        */
+        :root {
+            --from: 90svh;
+            --to: 0svh;
+        }
+
+        #showArea {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            transition: translate 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            translate: 0svw;
+            display: flex;
+            flex-flow: column;
+            flex-direction: column;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        #showArea::after,
+        #showArea::before {
+            content: '';
+            display: block;
+            background-color: rgba(226, 141, 226, 0.302);
+            backdrop-filter: blur(22px) opacity(0.8);
+        }
+
+        #showArea::before {
+            height: var(--from);
+        }
+
+        #showArea::after {
+            height: var(--to);
+        }
+
+        #ck-showArea {
+            position: fixed;
+        }
+
+        #ck-showArea:checked~#showArea {
+            translate: -90svw;
+        }
+
+        footer {
+            min-height: 50lvh;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+section {
+    min-height: 50svh;
+}
+
+#header .logo,
+#header .quote {
+    /* flex: 1; */
+}
+
+#header .logo {
+    position: relative;
+    width: auto;
+}
+
+#header .logo-errelab {
+    transition: all 1.5s ease-in-out;
+    max-width: 350px;
+    shape-outside: url("/assets/imgs/logo-errelab.png");
+    shape-margin: 0.5rem;
+    /* margin-right: -20%; */
+    transform: translateY(-30%);
+    /* z-index: -1; */
+}
+
+#header.sticky .logo-errelab {
+    max-width: 50px;
+    transform: translateY(-30%);
+}
+
+#header .logo-text-errelab {
+    transition: all 1.5s ease-in-out;
+    font-size: 5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+#header.sticky .logo-text-errelab {
+    font-size: 1.75rem;
+    /* top: 0;
+    left: 0; */
+}
+
+#header.sticky .quote {
+    display: none;
+}
+
+body>header {
+    min-height: 100lvh;
+}
+
+#header {
+    top: -0px;
+    transition: all 3s ease-in-out;
+    animation: initialheader 3.75s 1;
+
+}
+
+#header.sticky {
+    box-shadow: nose;
+    position: fixed;
+    top: 0;
+    min-height: 0lvh;
+    width: 100%;
+}
+
+main {
+    margin-top: 60px;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    overflow: clip;
+}
+
+section {}
