@@ -15,7 +15,7 @@ section {
 #header .logo-errelab {
     transition: all 1.5s ease-in-out;
     max-width: 350px;
-    shape-outside: url("/assets/imgs/logo-errelab.png");
+    shape-outside: url("./assets/imgs/logo-errelab.png");
     shape-margin: 0.5rem;
     /* margin-right: -20%; */
     transform: translateY(-30%);
