@@ -1,5 +1,5 @@
 section {
-    min-height: 50svh;
+    min-height: 30svh;
 }
 
 #header .logo,
@@ -75,5 +75,3 @@ main {
     gap: 30px;
     overflow: clip;
 }
-
-section {}

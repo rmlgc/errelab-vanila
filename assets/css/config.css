@@ -18,6 +18,9 @@
         --size-sm: calc(0.25lvw + 3px);
         --size-md: calc(0.50lvw + 3px);
         --size-lg: calc(0.75lvw + 3px);
+        --size-y-sm: calc(0.25lvh + 3px);
+        --size-y-md: calc(0.50lvh + 3px);
+        --size-y-lg: calc(0.75lvh + 3px);
         --size-w-min: calc(300px - (var(--size-sm) * 4));
         --size-wxs-sm: calc(25% - (var(--size-sm) * 4));
         --size-wxs-md: calc(25% - (var(--size-md) * 4));
@@ -56,12 +59,6 @@
         font-size: var(--font-size);
         background-color: var(--color-black);
         color: var(--color-white);
-    }
-
-    dl,
-    .text,
-    p {
-        font-size: 20px;
     }
 
     body {
@@ -108,6 +105,20 @@
         object-fit: contain;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 100%;
+        margin: 8px 0 20px;
+        display: inline-flex;
+        font-size-adjust: 0.5;
+        line-height: calc(1ex / 0.32);
+        padding-bottom: 7px;
+    }
+
     .title,
     h1 {
         font-size: 3rem;
@@ -116,20 +127,17 @@
     h2 {
         font-size: 2.2rem;
         line-height: 100%;
-        padding-bottom: 10px;
     }
 
     .subtitle,
     h3 {
         font-size: 1.75rem;
         line-height: 100%;
-        padding-bottom: 10px;
     }
 
     h4 {
         font-size: 1.5rem;
         line-height: 100%;
-        padding-bottom: 10px;
     }
 
     .title,
@@ -137,11 +145,25 @@
     h2,
     .subtitle {
         line-height: 100%;
-        padding-bottom: 10px;
         letter-spacing: -2px;
     }
 
+    dl,
+    .text,
+    p {
+        font-size: 20px;
+    }
+
+    blockquote {
+        margin: 8px 0 20px;
+    }
+
+    hr {
+        margin-block: 30px;
+    }
+
     .container,
+    .container-full,
     .container-xs,
     .container-sm,
     .container-md {
@@ -150,8 +172,14 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        gap: var(--size-lg) var(--size-md);
+        gap: var(--size-y-sm) var(--size-lg);
         min-width: var(--size-w-min);
+    }
+
+    .container-full {
+        width: 100%;
+        max-width: 100%;
+        padding-inline: var(--size-lg);
     }
 
     .column {
@@ -187,6 +215,14 @@
         padding: 0 4px;
         background-color: var(--color-secondary-o);
     }
+
+    [class*='container'] [class*='container'] {
+        margin-inline: 0px;
+        /* width: 100%; */
+        padding: var(--size-lg) 0;
+    }
+
+    @media screen and (max-width: 528px) {}
 
     @media screen and (min-width: 528px) {
         .container-xs {

@@ -1,7 +1,10 @@
 .t--font-primary,
 .t--pacifico {
     font-family: 'Pacifico', cursive;
-    line-height: 1.7em;
+    letter-spacing: 0;
+    font-size-adjust: 0.5;
+    line-height: calc(1ex / 0.32);
+    padding-bottom: 0;
 }
 
 .t--white {
@@ -43,6 +46,14 @@
     line-height: 0%;
 }
 
+.bg--white {
+    background-color: var(--color-white);
+}
+
+.bg--black {
+    background-color: var(--color-black);
+}
+
 .bg--primary {
     background-color: var(--color-primary);
 }
@@ -59,6 +70,14 @@
 .bg--gradient-secondary {
     background-image: -webkit-linear-gradient(to left, var(--color-secondary), var(--color-primary));
     background-image: linear-gradient(to left, var(--color-secondary), var(--color-primary));
+}
+
+.bg--white-o {
+    background-color: var(--color-white-o);
+}
+
+.bg--black-o {
+    background-color: var(--color-black-o);
 }
 
 .bg--primary-o {

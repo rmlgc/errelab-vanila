@@ -1,14 +1,33 @@
-.blog h1,
-.blog h2,
-.blog h3,
-.blog h4,
-.blog h5,
-.blog h6 {
-    margin: 27px 0 18px;
+.blog h1+p,
+.blog h2+p,
+.blog h3+p,
+.blog h4+p,
+.blog h5+p,
+.blog h6+p {
+    margin-top: 0px;
+}
+
+.blog h1::after {
+    content: "";
+    position: absolute;
+    background-color: var(--color-white-o);
+    height: 22px;
+    width: 100%;
+    bottom: 0;
+    display: block;
+    z-index: -1;
+    transform: skewX(60deg) skewY(0deg) translateX(-0%) translateY(-40%);
+}
+
+.blog h1:first-of-type {
+    margin-bottom: 0;
 }
 
 .blog p {
-    margin: 20px 0 18px;
+    margin: 8px 0 18px;
+    font-size-adjust: 0.5;
+    line-height: calc(1ex / 0.32);
+    /* text-align: justify; */
 }
 
 .blog blockquote {
@@ -23,47 +42,66 @@
     content: close-quote;
 }
 
-dl {
+.blog dl {
     padding-block: 8px;
     width: fit-content;
-    margin: auto;
+    margin: 24px auto;
 }
 
-dl::after,
-dl::before {
+.blog dl::after,
+.blog dl::before {
     content: "";
     position: absolute;
-    height: 50px;
-    width: 30%;
+    height: 40%;
+    width: 40%;
     border-color: var(--color-secondary);
-    border-style: inset;
+    border-style: solid;
     border-width: 0;
 }
 
-dl::before {
-    border-top-width: 1px;
-    border-left-width: 1px;
-    transform: translateX(-8px);
+.blog dl::before {
+    border-top-width: 2px;
+    border-left-width: 2px;
+    transform: translate(-12px, -0px);
     top: 0;
     left: 0;
 }
 
-dl::after {
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    transform: translateX(8px);
+.blog dl::after {
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    transform: translate(12px, 2px);
     bottom: 0%;
     right: 0px;
 }
 
-dt {
+.blog dt {
     font-weight: 800;
 }
 
-dd {
+.blog dd {
     padding-left: 20px;
 }
 
-dd:not(:last-child) {
+.blog dd:not(:last-child) {
     margin-bottom: 20px;
+}
+
+.blog details ::marker {
+    transition: all 3s ease-in-out;
+
+}
+
+.blog details[open] ::marker {
+    color: darkorange;
+    transform: rotate(180deg);
+}
+
+.blog summary>* {
+    display: inline-flex;
+    max-width: 90%;
+}
+
+.blog details[open]>summary:first-of-type {
+    /* list-style: inside disclosure-closed; */
 }
