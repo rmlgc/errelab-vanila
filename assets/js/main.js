@@ -1,9 +1,14 @@
+import { start as headerInit } from './Errelab/errelab.header.js';
+import loading from './Errelab/errelab.loading.js';
 import OnViewElement from './Errelab/onViewElement.js';
 
-
+const webApp = new loading();
+webApp.start();
 
 document.addEventListener("DOMContentLoaded", function ()
 {
+    webApp.end();
+    headerInit();
     const header = document.querySelector('header');
     // console.log(header);
     const options = {

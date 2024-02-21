@@ -73,20 +73,20 @@ export default class OnViewElement
         const classOut = this.options.out.class;
         const classIn = this.options.in.class;
 
-        if (boxes[1])
-        {
-            const b1 = boxes[1];
-            const b1Top = Math.round(b1.getBoundingClientRect().top);
-            const b1Bottom = Math.round(b1.getBoundingClientRect().bottom);
+        // if (boxes[1])
+        // {
+        //     const b1 = boxes[1];
+        //     const b1Top = Math.round(b1.getBoundingClientRect().top);
+        //     const b1Bottom = Math.round(b1.getBoundingClientRect().bottom);
 
-            if ((b1Top - windowOffsetBottom <= 0) && (b1Bottom - windowOffsetTop >= 0))
-            {
-                console.log('elemento Entra');
-            } else
-            {
-                console.log('elemento Sale');
-            }
-        }
+        //     if ((b1Top - windowOffsetBottom <= 0) && (b1Bottom - windowOffsetTop >= 0))
+        //     {
+        //         console.log('elemento Entra');
+        //     } else
+        //     {
+        //         console.log('elemento Sale');
+        //     }
+        // }
 
         for (const key in boxes)
         {
@@ -100,14 +100,12 @@ export default class OnViewElement
 
                 if ((boxTop - windowOffsetBottom <= 0) && (OffsetTop))
                 {
-                    console.log('show');
                     if (this.options.in)
                         this.classListAdd(box, classIn);
                     if (this.options.out)
                         this.classListRemove(box, classOut);
                 } else
                 {
-                    console.log('hide');
                     if (this.options.out)
                         this.classListAdd(box, classOut);
                     if (this.options.in)
@@ -115,12 +113,6 @@ export default class OnViewElement
                 }
             }
         }
-
-        boxes.forEach(function (box)
-        {
-
-
-        });
     }
     getTarget = () =>
     {

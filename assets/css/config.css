@@ -6,14 +6,15 @@
      * #b0a295
      */
     :root {
-        --color-white: rgb(193 193 214);
-        --color-black: rgb(83 77 89);
+        --color-white: #c1c1d6;
+        --color-black: #352F37;
         --color-primary: #ffb26b;
         --color-secondary: #ffa9d1;
-        --color-white-o: rgba(193, 193, 214, 0.55);
-        --color-black-o: rgba(83, 77, 89, 0.55);
-        --color-primary-o: #ffb36b55;
-        --color-secondary-o: #ffa9d155;
+        --color-white-o: #E1E1EA99;
+        --color-black-o: #534d5999;
+        --color-primary-o: #ffb26bCC;
+        --color-secondary-o: #ffa9d1CC;
+
         --font-size: clamp(17px, 3vw, 25px);
         --size-sm: calc(0.25lvw + 3px);
         --size-md: calc(0.50lvw + 3px);
@@ -38,10 +39,14 @@
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --color-white: rgb(207 207 237);
-            --color-black: rgb(43 38 49);
-            --color-primary: #f99d47;
-            --color-secondary: #cfa9ff;
+            --color-white: #cfcfed;
+            --color-black: #2b2631;
+            --color-primary: #F89E49;
+            --color-secondary: #CDA3FF;
+            --color-white-o: #D7D7EF80;
+            --color-black-o: #332e3980;
+            --color-primary-o: #F9D0A9CC;
+            --color-secondary-o: #E3CCFFCC;
         }
     }
 
@@ -55,10 +60,12 @@
     }
 
     html {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Nunito Sans', sans-serif, serif, Arial;
         font-size: var(--font-size);
         background-color: var(--color-black);
         color: var(--color-white);
+        /* font-size-adjust: 0.5;
+        line-height: calc(1ex / 0.32); */
     }
 
     body {
@@ -114,29 +121,39 @@
         line-height: 100%;
         margin: 8px 0 20px;
         display: inline-flex;
-        font-size-adjust: 0.5;
-        line-height: calc(1ex / 0.32);
         padding-bottom: 7px;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     .title,
     h1 {
-        font-size: 3rem;
+        font-size: calc(1.7rem + var(--font-size));
     }
 
     h2 {
-        font-size: 2.2rem;
+        font-size: calc(1.45rem + var(--font-size));
         line-height: 100%;
     }
 
     .subtitle,
     h3 {
-        font-size: 1.75rem;
+        font-size: calc(1.1rem + var(--font-size));
         line-height: 100%;
     }
 
     h4 {
-        font-size: 1.5rem;
+        font-size: calc(0.8rem + var(--font-size));
+        line-height: 100%;
+    }
+
+    h5 {
+        font-size: calc(0.55rem + var(--font-size));
+        line-height: 100%;
+    }
+
+    h6 {
+        font-size: calc(0.2rem + var(--font-size));
         line-height: 100%;
     }
 
@@ -151,7 +168,8 @@
     dl,
     .text,
     p {
-        font-size: 20px;
+        margin: 8px 0 18px;
+        /* text-align: justify; */
     }
 
     blockquote {
@@ -213,7 +231,7 @@
     code {
         color: var(--color-primary);
         padding: 0 4px;
-        background-color: var(--color-secondary-o);
+        background-color: var(--color-black-o);
     }
 
     [class*='container'] [class*='container'] {
@@ -239,10 +257,6 @@
     }
 
     @media screen and (min-width: 792px) {
-        html {
-            font-size: var(--font-size);
-        }
-
         .container-xs {
             max-width: var(--size-wxs-lg);
         }

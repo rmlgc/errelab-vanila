@@ -15,7 +15,7 @@ section {
 #header .logo-errelab {
     transition: all 1.5s ease-in-out;
     max-width: 350px;
-    shape-outside: url("./assets/imgs/logo-errelab.png");
+    shape-outside: url("../imgs/logo-errelab.png");
     shape-margin: 0.5rem;
     /* margin-right: -20%; */
     transform: translateY(-30%);
@@ -29,7 +29,7 @@ section {
 
 #header .logo-text-errelab {
     transition: all 1.5s ease-in-out;
-    font-size: 5rem;
+    font-size: calc(3.5rem + var(--font-size));
     position: absolute;
     top: 0;
     left: 0;
@@ -52,9 +52,7 @@ body>header {
 
 #header {
     top: -0px;
-    transition: all 3s ease-in-out;
-    animation: initialheader 3.75s 1;
-
+    position: sticky;
 }
 
 #header.sticky {
@@ -74,4 +72,8 @@ main {
     justify-content: space-around;
     gap: 30px;
     overflow: clip;
+}
+
+a {
+    font-weight: 900;
 }

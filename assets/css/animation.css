@@ -1,27 +1,36 @@
 .animate {
-    transition: all 1.75s ease-in-out;
+    transition: all 1.25s ease-in-out;
 }
 
-.show {
+.animate.show {
     opacity: 1;
 }
 
-.hide {
+.animate.hide {
     opacity: 0;
+    transition: all .75s 0.75s ease-in-out;
 }
 
-.right.hide {
-    transform: translateX(-100svw);
+.animate.right.hide {
+    transform: translateX(-30svw);
 }
 
-.left.hide {
-    transform: translateX(100svw);
+.animate.left.hide {
+    transform: translateX(30svw);
 }
 
-.right.show {
+.animate.right.show {
     transform: translateX(0svw);
 }
 
-.left.show {
+.animate.left.show {
     transform: translateX(0svw);
+}
+
+.animate.up.hide {
+    transform: translatey(30svw);
+}
+
+.animate.up.show {
+    transform: translatey(0svw);
 }

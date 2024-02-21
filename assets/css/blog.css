@@ -23,13 +23,6 @@
     margin-bottom: 0;
 }
 
-.blog p {
-    margin: 8px 0 18px;
-    font-size-adjust: 0.5;
-    line-height: calc(1ex / 0.32);
-    /* text-align: justify; */
-}
-
 .blog blockquote {
     font-style: italic;
 }
