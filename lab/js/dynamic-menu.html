@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/css/config.css">
+</head>
+
+<body>
+    <h1>Enlaces generados</h1>
+    <div id="main">
+
+    </div>
+
+    <script>
+        const listLinks = [
+            {
+                text: '10_file',
+                options: {
+                    class: 'numero fake',
+                },
+                filters: [
+                    'fake', 'file',
+                ]
+            },
+
+            {
+                tag: 'a',
+                text: 'Bulbasaur',
+                options: {
+                    href: 'https://service.mattel.com/instruction_sheets/GFC89.pdf',
+                    class: 'verde pokemon',
+                },
+                filters: [
+                    'file', 'pokemon',
+                ]
+            },
+            {
+                tag: 'a',
+                text: 'Charmander',
+                options: {
+                    href: 'http://',
+                    class: 'rojo pokemon',
+                },
+                filters: [
+                    'pokemon',
+                ]
+            },
+            {
+                tag: 'a',
+                text: 'Squirtle',
+                options: {
+                    href: 'http://',
+                    class: 'azul pokemon',
+                },
+                filters: [
+                    'pokemon',
+                ]
+            },
+            {
+                text: '40_file',
+                options: {
+                    class: 'numero fake',
+                },
+                filters: [
+                    'fake', 'file',
+                ]
+            },
+            {
+                text: '1_file',
+                options: {
+                    class: 'numero fake',
+                },
+                filters: [
+                    'fake', 'file',
+                ]
+            },
+            {
+                text: '5_file',
+                options: {
+                    class: 'numero fake',
+                },
+                filters: [
+                    'fake', 'file',
+                ]
+            },
+            {
+                text: 'github',
+                url: 'https://github.com',
+                options: {
+                    class: 'web',
+                },
+                filters: [
+                    'web', 'profile',
+                ]
+            },
+            {
+                text: 'errelab',
+                url: window.location.origin,
+                options: {
+                    class: 'web',
+                },
+                filters: [
+                    'web', 'profile',
+                ]
+            },
+        ];
+
+        class errelabCreateElement
+        {
+            constructor()
+            {
+
+            }
+            createElement(tag = 'span', value = '<Insert value><a>', options)
+            {
+
+                const element = document.createElement(tag);
+                // var createAText = document.createTextNode(theCounter);
+                element.innerHTML = typeof value === "string" ?
+                    `${ value.replace(
+                        /</g,
+                        "&lt;",
+                    ) }` :
+                    value;
+                for (const key in options)
+                {
+                    if (Object.hasOwnProperty.call(options, key))
+                    {
+                        element.setAttribute(key, options[key]);
+                    }
+                }
+                return element;
+            }
+        }
+
+        class dynamicMenu extends errelabCreateElement
+        {
+            links = [
+                {
+                    text: 'home',
+                    url: '/',
+                },
+            ];
+            constructor(links = null)
+            {
+                super();
+                this.links = links ? links : this.links;
+            }
+
+            getHome()
+            {
+                return this.createElement('a', 'home', { 'href': '/' });
+            }
+            getLink()
+            {
+
+            }
+            getAll()
+            {
+                const array = [];
+                for (let index = 0; index < this.links.length; index++)
+                {
+                    const link = this.links[index];
+                    if (link.url)
+                    {
+                        Object.assign(link.options, { href: link.url });
+                    }
+                    array.push(this.createElement('a', link.text, link.options));
+                }
+                return array;
+            }
+            getAllSorted()
+            {
+                const array = this.getAll();
+
+                const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+                return array.sort(function (a, b)
+                {
+                    return collator.compare(b.text, a.text);
+                });
+            }
+        }
+
+        const links = new dynamicMenu(listLinks);
+        const elMain = document.querySelector('#main');
+        links.getAllSorted().forEach((e) => elMain.prepend(e));
+    </script>
+
+    <style>
+        #main {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        a {
+            display: flex;
+            min-width: calc((100svw / 3) - 20px * 2);
+            min-height: calc((100svh / 4) - 20px * 3);
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-white-o);
+            color: var(--color-black);
+        }
+
+        .numero {
+            box-shadow: 1px 1px 1px 1px inset rgb(255, 255, 111);
+        }
+
+        .rojo {
+            box-shadow: 1px 1px 1px 1px inset rgb(255, 111, 111);
+        }
+
+        .verde {
+            box-shadow: 1px 1px 5px 1px inset rgb(111, 255, 111);
+        }
+
+        .azul {
+            box-shadow: 1px 1px 5px 1px inset rgb(111, 111, 255);
+        }
+
+        .web {
+            box-shadow: 1px 1px 5px 1px inset var(--color-secondary),
+                1px 1px 5px 1px var(--color-primary);
+            cursor: pointer;
+        }
+
+        .fake {
+            cursor: not-allowed;
+        }
+    </style>
+</body>
+
+</html>
