@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErreLab - Sandbox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,400;6..12,700;6..12,800&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/config.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/errelab.css">
+    <link rel="stylesheet" href="./assets/css/animation.css">
+    <link rel="stylesheet" href="./assets/css/loading.css">
+
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/jcrop/dist/jcrop.css">
+    <script src="https://unpkg.com/jcrop"></script>
+
+
+</head>
+
+<body>
+    <h1>image jcrop</h1>
+    <div id="contentJcrop">
+        <img src="https://picsum.photos/id/1/599/400" id="target4">
+    </div>
+    <hr>
+
+    <script>
+        Jcrop.load('target4').then((img) =>
+        {
+            setTimeout(() =>
+            {
+                const el = document.getElementById('contentJcrop');
+                const elW = document.getElementById('contentJcrop').offsetWidth;
+                const elH = document.getElementById('contentJcrop').offsetHeight;
+                const options = {
+                    aspectRatio: 2 / 1,
+                    handles: ["sw", "nw", "ne", "se"],
+                };
+                const stage3 = Jcrop.attach('target4', options);
+                const widget = Jcrop.Widget.create();
+                stage3.addWidget(widget);
+
+                console.log(stage3);
+                console.log(stage3.active);
+                // console.log(stage3.getOptions());
+                const rect = Jcrop.Rect.create(0, 0, (elW / 1), (elW * 1 / 2));
+                console.log(elW, elH);
+                console.log(elW / 4, elH / 2);
+
+                // const rect = Jcrop.Rect.fromPoints([0, 100], [300, 0]);
+                stage3.newWidget(rect.normalize(), options);
+                console.log(stage3.active.pos);
+                stage3.focus();
+                stage3.listen('crop.move', function (widget, e)
+                {
+                    const pos = widget.pos;
+                    console.log(pos.x, pos.y, pos.w, pos.h);
+                });
+            }, 1000);
+        });
+
+    </script>
+
+    <style>
+        #contentJcrop {
+            max-width: 60svw;
+        }
+
+        #contentJcrop img {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        div#contentDropzone {}
+    </style>
+    <h1>Dropzone</h1>
+    <div id="contentDropzone">
+        <form action="/target" class="dropzone" id="my-great-dropzone"></form>
+    </div>
+
+    <script>
+        Dropzone.options.myGreatDropzone = { // camelized version of the `id`
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            accept: function (file, done)
+            {
+                if (file.name == "justinbieber.jpg")
+                {
+                    done("Naha, you don't.");
+                }
+                else { done(); }
+            }
+        };
+    </script>
+    <style>
+        #contentDropzone {}
+    </style>
+</body>
+
+</html>
